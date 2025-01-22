@@ -36,7 +36,7 @@ async def get_last_messages():
     conn = sqlite3.connect('data/chat.db')
     c = conn.cursor()
     c.execute('''SELECT username, message FROM messages 
-                 ORDER BY timestamp DESC LIMIT 20''')
+                 ORDER BY timestamp DESC LIMIT 100''')
     messages = c.fetchall()
     conn.close()
     return [f"{username}: {message}" for username, message in reversed(messages)]
